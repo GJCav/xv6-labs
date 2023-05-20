@@ -302,6 +302,9 @@ fork(void)
   // Cause fork to return 0 in the child.
   np->trapframe->a0 = 0;
 
+  // JCav: copy trace_mask
+  np->trace_mask = p->trace_mask;
+
   // increment reference counts on open file descriptors.
   for(i = 0; i < NOFILE; i++)
     if(p->ofile[i])
@@ -680,4 +683,18 @@ procdump(void)
     printf("%d %s %s", p->pid, state, p->name);
     printf("\n");
   }
+}
+
+// Lab2
+uint64 
+proc_count(void)
+{
+  uint count = 0;
+  
+  for(struct proc *p = proc; p != &proc[NPROC];p++) {
+    if (p->state != UNUSED) {
+      count++;
+    }
+  }
+  return count;
 }
