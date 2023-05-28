@@ -1,0 +1,10 @@
+Which other xv6 system call(s) could be made faster using this shared page? Explain how.
+
+可以加速fork()，通过在struct usyscall中添加一个parent数据，以供child们需要的时候在用户态直接使用USYSCALL页面调用，而不用切换到内核态。
+同样的思路可以加速 fstat
+
+Explain the output of vmprint in terms of Fig 3-4 from the text. What does page 0 contain? What is in page 2? When running in user mode, could the process read/write the memory mapped by page 1? What does the third to last page contain?
+
+page 0: kernel page table
+page 2: trampoline page shared with the kernel
+page 3-end: used by users

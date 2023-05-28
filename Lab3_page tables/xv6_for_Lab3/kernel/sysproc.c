@@ -69,12 +69,32 @@ sys_sleep(void)
   return 0;
 }
 
-
+// #define LAB_PGTBL
 #ifdef LAB_PGTBL
 int
 sys_pgaccess(void)
 {
-  // lab pgtbl: your code here.
+  uint64 vaddr;
+  int max_num;
+  uint64 mask_addr;
+
+  argaddr(0, &vaddr);
+  argint(1, &max_num);
+  argaddr(2, &mask_addr);
+
+  uint64 mask = 0;
+  struct proc *p = myproc();
+  for(int i = 0;i < max_num;i++) {
+    pte_t *pte = walk(p->pagetable, vaddr + i * PGSIZE, 0);
+    if (pte == 0) panic("sys_pgaccess: page not exist");
+    if (PTE_FLAGS(*pte) & PTE_A) {
+      mask |= (1L << i);
+    }
+    *pte = ((*pte) & PTE_A) ^ (*pte); // set PTE_A to 0
+  }
+  if (copyout(p->pagetable, mask_addr, (char*)&mask, sizeof(mask)) < 0) {
+    panic("sys_pgaccess: copyout error");
+  }
   return 0;
 }
 #endif
