@@ -63,7 +63,7 @@ UPROGS=\
 
 代码比较简单，只要注意 pipe 是一个半双工的通道，父子相互通信需要创建两个 pipe。
 
-代码见：[pingpong.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6 and Unix utilities/xv6_for_Lab1/user/pingpong.c)
+代码见：[pingpong.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6%20and%20Unix%20utilities/xv6_for_Lab1/user/pingpong.c)
 
 
 
@@ -77,7 +77,7 @@ UPROGS=\
 
 进程的创建可使用 fork，进程之间的通信使用 pipe，但在解除掉整个算法程序时需要比较小心的处理进程结束顺序。最后 fork 出的进程需要最先结束，父进程不能在子进程结束前结束，所以需要用到 wait 函数等待子进程结束。
 
-实现代码见：[primes.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6 and Unix utilities/xv6_for_Lab1/user/primes.c)
+实现代码见：[primes.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6%20and%20Unix%20utilities/xv6_for_Lab1/user/primes.c)
 
 
 
@@ -85,7 +85,7 @@ UPROGS=\
 
 仿照并实现 linux 中的 `find` 指令。
 
-实现代码见：[find.c at](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6 and Unix utilities/xv6_for_Lab1/user/find.c)
+实现代码见：[find.c at](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6%20and%20Unix%20utilities/xv6_for_Lab1/user/find.c)
 
 实验要点：
 
@@ -115,7 +115,7 @@ a bddd c
 
 虽然功能没有 linux 中 `xargs` 那么丰富，但已经能够处理变长参数。
 
-实现代码见：[xargs.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6 and Unix utilities/xv6_for_Lab1/user/xargs.c)
+实现代码见：[xargs.c](https://github.com/GJCav/xv6-labs/blob/master/Lab1_Xv6%20and%20Unix%20utilities/xv6_for_Lab1/user/xargs.c)
 
 实验要点：
 
